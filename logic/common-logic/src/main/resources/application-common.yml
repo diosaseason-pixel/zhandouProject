@@ -1,0 +1,27 @@
+# 公共配置 - 所有逻辑服共享
+# MongoDB 和 Redis 配置
+
+spring:
+  data:
+    mongodb:
+      host: ${MONGO_HOST:localhost}
+      port: ${MONGO_PORT:27017}
+      database: ${MONGO_DATABASE:zmxs-test}
+      # 如果需要认证，取消下面的注释并设置环境变量
+      # username: ${MONGO_USERNAME:}
+      # password: ${MONGO_PASSWORD:}
+      # authentication-database: ${MONGO_AUTH_DB:admin}
+    
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      database: ${REDIS_DATABASE:11}
+      # 如果需要密码，取消下面的注释并设置环境变量
+      # password: ${REDIS_PASSWORD:}
+      timeout: 3000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+

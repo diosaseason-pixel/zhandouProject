@@ -18,6 +18,7 @@
  */
 package com.game.common.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,16 +44,31 @@ import java.util.Map;
 @EnableCaching
 public class RedisConfig {
 
+    @Value("${spring.data.redis.host:localhost}")
+    private String redisHost;
+
+    @Value("${spring.data.redis.port:6379}")
+    private int redisPort;
+
+    @Value("${spring.data.redis.database:0}")
+    private int redisDatabase;
+
+    @Value("${spring.data.redis.password:}")
+    private String redisPassword;
+
     /**
      * Redis连接工厂
      */
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
-        config.setHostName("localhost");
-        config.setPort(6379);
-        // 如果有密码，可以设置密码
-        // config.setPassword("your_password");
+        config.setHostName(redisHost);
+        config.setPort(redisPort);
+        config.setDatabase(redisDatabase);
+        // 如果有密码，从配置文件读取
+        if (redisPassword != null && !redisPassword.isEmpty()) {
+            config.setPassword(redisPassword);
+        }
         return new LettuceConnectionFactory(config);
     }
 
@@ -98,6 +114,9 @@ public class RedisConfig {
         
         // playerNameCache配置，缓存时间2小时
         cacheConfigurations.put("playerNameCache", defaultCacheConfig.entryTtl(Duration.ofHours(2)));
+        
+        // serverMergeCache配置，缓存时间24小时（合服数据变化少，可以缓存更久）
+        cacheConfigurations.put("serverMergeCache", defaultCacheConfig.entryTtl(Duration.ofHours(24)));
         
         // 构建缓存管理器
         return RedisCacheManager.builder(redisConnectionFactory)

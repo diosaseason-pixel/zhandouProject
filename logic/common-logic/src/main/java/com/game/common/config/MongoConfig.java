@@ -21,6 +21,7 @@ package com.game.common.config;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
@@ -32,14 +33,24 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 //@EnableMongoRepositories
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
+    @Value("${spring.data.mongodb.database:zmxs-test}")
+    private String databaseName;
+
+    @Value("${spring.data.mongodb.host:localhost}")
+    private String mongoHost;
+
+    @Value("${spring.data.mongodb.port:27017}")
+    private int mongoPort;
+
     @Override
     protected String getDatabaseName() {
-        return "zmxs-test";
+        return databaseName;
     }
 
     @Override
     public MongoClient mongoClient() {
-        return MongoClients.create("mongodb://localhost:27017");
+        String connectionString = String.format("mongodb://%s:%d", mongoHost, mongoPort);
+        return MongoClients.create(connectionString);
     }
 
     @Bean

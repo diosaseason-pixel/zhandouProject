@@ -1,0 +1,15 @@
+# OneApplication 配置
+# 引入公共配置（MongoDB、Redis）
+spring:
+  config:
+    import:
+      - classpath:application-common.yml
+  
+  application:
+    name: one-application
+
+# 游戏服务配置
+game:
+  server:
+    name: 单体游戏服务器
+
