@@ -1,0 +1,73 @@
+[versions]
+# 插件版本
+spring-boot = "3.2.3"
+spring-dependency-management = "1.1.4"
+lombok = "1.18.30"
+mapstruct = "1.5.5.Final"
+junit = "5.10.2"
+proguard = "7.6.1"
+
+# 测试相关
+junit-bom = "5.10.0"
+
+# iohao.game 相关
+iohao-game = "21.24"
+
+# 其他依赖
+jetbrains-annotations = "24.0.0"
+erlang-jinterface = "1.6.1"
+gson = "2.8.9"
+guava = "32.0.1-android"
+hutool = "5.8.24"
+reflections = "0.10.2"
+commons-lang3 = "3.12.0"
+easyexcel = "4.0.3"
+lombok-mapstruct-binding = "0.2.0"
+
+[libraries]
+# Spring Boot 相关
+spring-boot-starter = { group = "org.springframework.boot", name = "spring-boot-starter" }
+spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" }
+spring-boot-starter-thymeleaf = { group = "org.springframework.boot", name = "spring-boot-starter-thymeleaf" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "spring-boot" }
+spring-boot-starter-data-mongodb = { group = "org.springframework.boot", name = "spring-boot-starter-data-mongodb" }
+spring-boot-starter-data-redis = { group = "org.springframework.boot", name = "spring-boot-starter-data-redis" }
+spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator" }
+
+# 测试相关
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit-bom" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+
+# Lombok 相关
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+lombok-mapstruct-binding = { module = "org.projectlombok:lombok-mapstruct-binding", version = "0.2.0" }
+
+# MapStruct 相关
+mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
+mapstruct-processor = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
+
+# iohao.game 相关
+iohao-bolt-core = { group = "com.iohao.game", name = "bolt-core", version.ref = "iohao-game" }
+iohao-light-domain-event = { group = "com.iohao.game", name = "light-domain-event", version.ref = "iohao-game" }
+iohao-bolt-client = { group = "com.iohao.game", name = "bolt-client", version.ref = "iohao-game" }
+iohao-bolt-broker-server = { group = "com.iohao.game", name = "bolt-broker-server", version.ref = "iohao-game" }
+iohao-external-netty = { group = "com.iohao.game", name = "external-netty", version.ref = "iohao-game" }
+iohao-light-jprotobuf = { group = "com.iohao.game", name = "light-jprotobuf", version.ref = "iohao-game" }
+iohao-run-one-netty = { group = "com.iohao.game", name = "run-one-netty", version.ref = "iohao-game" }
+iohao-light-game-room = { group = "com.iohao.game", name = "light-game-room", version.ref = "iohao-game" }
+
+# 其他依赖
+jetbrains-annotations = { group = "org.jetbrains", name = "annotations", version.ref = "jetbrains-annotations" }
+erlang-jinterface = { group = "org.erlang.otp", name = "jinterface", version.ref = "erlang-jinterface" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
+hutool = { group = "cn.hutool", name = "hutool-all", version.ref = "hutool" }
+reflections = { group = "org.reflections", name = "reflections", version.ref = "reflections" }
+commons-lang3 = { group = "org.apache.commons", name = "commons-lang3", version.ref = "commons-lang3" }
+easyexcel = { group = "com.alibaba", name = "easyexcel", version.ref = "easyexcel" }
+proguard-gradle = { module = "com.guardsquare:proguard-gradle", version.ref = "proguard" }
+
+[plugins]
+springboot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
+lombok = { id = "io.freefair.lombok", version = "8.6" }

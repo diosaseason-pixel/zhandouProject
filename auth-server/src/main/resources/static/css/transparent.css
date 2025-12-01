@@ -1,0 +1,18 @@
+/* 透明背景样式 */
+html,
+body {
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+.login-container {
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* 确保登录框保持白色背景 */
+.login-box {
+    background-color: white !important;
+}
